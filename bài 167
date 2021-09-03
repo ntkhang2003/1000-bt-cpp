@@ -1,0 +1,50 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+int KiemTraToanLe(int n)
+{
+    int dv;
+    while (n != 0)
+    {
+        dv = n % 10;
+        if (dv % 2 == 0) 
+            return 0;
+        n = n / 10;
+    }
+    return 1;
+}
+int max(int a[], int n)
+{
+    int max;
+    int count;
+    for (int i = 0; i < n; i++){
+        if (KiemTraToanLe(a[i]) == 1)
+            max = a[i];
+            count++;
+            break;
+    }
+    if (count == 0)
+        return 0;
+    for (int i = 0; i < n; i++){
+        if (KiemTraToanLe(a[i]) == 1)
+            if (a[i] > max)
+                max = a[i];
+    }
+    return max;
+}
+
+
+int main()
+{   
+    int a[1000];
+    int n;
+    cout << "Nhap so phan tu: ";
+    cin >> n;
+    for (int i = 0; i < n ; i++){
+        cout << "Nhap phan tu thu " << i+1 << ": ";
+        cin >> a[i];
+    }
+    cout << max(a, n);
+    return 0;
+}
+
