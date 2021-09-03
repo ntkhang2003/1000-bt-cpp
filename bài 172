@@ -1,0 +1,36 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+int UCLN2So(int x, int y)
+{
+	if (x % y == 0)
+		return y;
+	return UCLN2So(y, x % y);
+}
+int BCNN2So(int x, int y)
+{
+	return x / UCLN2So(x, y) * y;
+}
+int BCNN(int a[], int n)
+{
+	int BCNN = a[0];
+	for (int i = 1; i < n; i++)
+	{
+		BCNN = BCNN2So(BCNN, a[i]);
+	}
+	return BCNN;
+} 
+int main()
+{
+    int a[1000];
+    int n;
+    cout << "Nhap so phan tu: ";
+    cin >> n;
+    for (int i = 0; i < n; i++)
+    {
+        cout << "Nhap phan tu thu " << i+1 <<": ";
+        cin >> a[i];
+    }
+    cout << "BCNN: " << BCNN(a, n);
+    return 0;
+}
