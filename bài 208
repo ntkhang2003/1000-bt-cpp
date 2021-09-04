@@ -1,0 +1,36 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+bool KiemTraSoChinhPhuong(int n)
+{
+    int sqr = sqrt(n);
+    return (sqr*sqr == n);
+}
+/*  có thể viết
+    int KiemTraChinhPhuong(int n)
+{
+    return sqrt((float)n) == (int)sqrt((float)n);
+}
+*/
+int TinhTong(int a[], int n)
+{   
+    int sum = 0;
+    for (int i = 0; i < n; i++){
+        if (KiemTraSoChinhPhuong(a[i]))
+            sum += a[i];
+    }
+    return sum;
+}
+int main()
+{   
+    int a[1000];
+    int n;
+    cout << "Nhap so phan tu: ";
+    cin >> n;
+    for (int i = 0; i < n ; i++){
+        cout << "Nhap phan tu thu " << i+1 << ": ";
+        cin >> a[i];
+    }
+    cout << TinhTong(a, n);
+    return 0;
+}
