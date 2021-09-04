@@ -2,7 +2,7 @@
 #include <cmath>
 using namespace std;
 
-int TinhTong(int a[], int n)
+float TinhTong(float a[], int n)
 {
     int sum = 0;
     for (int i = 0; i < n; i++){
@@ -13,7 +13,7 @@ int TinhTong(int a[], int n)
 }
 int main()
 {   
-    int a[1000];
+    float a[1000];
     int n;
     cout << "Nhap so phan tu: ";
     cin >> n;
