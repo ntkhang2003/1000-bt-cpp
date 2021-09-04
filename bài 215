@@ -1,0 +1,30 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+double TinhKgCachTBGiuaCacGiaTriTrongMang(int a[], int n)
+{
+    int Tong = 0;
+    float y = 0;
+    for(int i = 0; i < n; i++)
+    {
+        for(int j = i + 1; j < n; j++)
+        {
+            Tong += abs(a[i] - a[i + 1]);
+            y++;
+        }
+    }
+    return Tong/y;
+}
+int main()
+{   
+    int a[1000];
+    int n;
+    cout << "Nhap so phan tu: ";
+    cin >> n;
+    for (int i = 0; i < n ; i++){
+        cout << "Nhap phan tu thu " << i+1 << ": ";
+        cin >> a[i];
+    }
+    cout << TinhKgCachTBGiuaCacGiaTriTrongMang(a, n);
+    return 0;
+}
