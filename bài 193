@@ -1,0 +1,39 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+int KiemTraDang3k(int n)
+{
+    int flag = 1;
+    if (n < 2) 
+        return 0;
+    while (n > 1){
+        int du = n % 3;
+        if (du != 0)
+            flag = 0;
+        n /= 3;
+    }
+    if (flag == 1)
+        return 1;
+    else
+        return 0;
+}
+void LietKe(int a[], int n)
+{
+    for (int i = 0; i < n; i++){
+        if (KiemTraDang3k(a[i]) == 1)
+            cout << a[i] << " ";
+    }
+}
+int main()
+{   
+    int a[1000];
+    int n;
+    cout << "Nhap so phan tu: ";
+    cin >> n;
+    for (int i = 0; i < n ; i++){
+        cout << "Nhap phan tu thu " << i+1 << ": ";
+        cin >> a[i];
+    }
+    LietKe(a, n);
+    return 0;
+}
