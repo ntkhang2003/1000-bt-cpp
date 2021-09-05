@@ -1,0 +1,34 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+void NhapMang(int a[], int n)
+{
+    cout << "Nhap so phan tu: ";
+    cin >> n;
+    for (int i = 0; i < n; i++){
+        cout << "Nhap phan tu thu " << i+1 << ": ";
+        cin >> a[i];    
+    }
+}
+void KiemTraChanLe(int a[], int n)
+{
+    int flag = 1;
+    for (int i = 0; i < n - 1; i++){
+        if ((a[i] + a[i+1]) % 2 == 0)
+            flag = 0;
+            break;
+    }
+    if (flag == 1)
+        cout << "True";
+    else if (flag == 0)
+        cout << "False";
+}
+int main()
+{   
+    int a[1000];
+    int n;
+    NhapMang(a, n);
+    KiemTraChanLe(a, n);
+    return 0;
+}
