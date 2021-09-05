@@ -1,43 +1,20 @@
 #include <iostream>
 #include <cmath>
 using namespace std;
-int KiemTraBiTrung(int a[], int n, int ViTri)
+void LietKe(int a[], int n)
 {
-    for (int i = ViTri - 1; i >= 0; i--)
-    {
-        if (a[i] == a[ViTri])
-        {
-            return 0;  
+    for (int i = 0; i < n; i++){
+        int flag = 0;
+        for (int j = 0; j < n; j++){
+            if (a[i] == a[j])
+                if (i <= j)
+                    flag++;
+                else
+                    break;
         }
-    }
-    return 1;         
-}
-int DemSoLuongPhanTuTrung(int a[], int n, int ViTri)
-{
-    int dem = 1;
-    for (int i = ViTri + 1; i < n; i++)
-    {
-        if (a[i] == a[ViTri])
-        {
-            dem++;
-        }
-    }
-    return dem;
-}
-
-void LietKeCacGiaTriXuatHienQua1Lan(int a[], int n)
-{
-    for (int i = 0; i < n; i++)
-    {
-        int CheckTrung = KiemTraBiTrung(a, n, i);
-        if (CheckTrung == 1)
-        {
-            int dem = DemSoLuongPhanTuTrung(a, n, i);
-            if(dem != 1)
-            {
-                cout << a[i];
-            }
-        }
+        if (flag >= 2)
+            cout << a[i] << endl;
+        
     }
 }
 int main()
@@ -50,6 +27,6 @@ int main()
         cout << "Nhap phan tu thu " << i+1 << ": ";
         cin >> a[i];
     }
-    LietKeCacGiaTriXuatHienQua1Lan(a, n);
+    LietKe(a, n);
     return 0;
 }
