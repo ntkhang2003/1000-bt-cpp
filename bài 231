@@ -1,0 +1,29 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+void LietKeDuyNhat(int a[], int n)
+{
+    for (int i = 0; i < n; i++){
+        int flag = 1;
+        for (int j = 0; j < n; j++){
+            if (a[i] == a[j] && i!= j)
+                flag = 0;
+        }
+        if (flag == 1)
+            cout << a[i] << endl;
+        
+    }
+}
+int main()
+{   
+    int a[1000];
+    int n;
+    cout << "Nhap so phan tu: ";
+    cin >> n;
+    for (int i = 0; i < n ; i++){
+        cout << "Nhap phan tu thu " << i+1 << ": ";
+        cin >> a[i];
+    }
+    LietKeDuyNhat(a, n);
+    return 0;
+}
