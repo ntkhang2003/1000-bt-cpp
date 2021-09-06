@@ -1,0 +1,50 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+void nhap(int *a, int n)
+{
+    for (int i = 0; i < n ; i++){
+        cout << "Nhap phan tu thu " << i+1 << ": ";
+        cin >> a[i];
+    }
+}
+bool KiemTraBiTrung(int *a, int n, int index)
+{
+    for (int i = 0; i < n; i++){
+        if (a[i] == a[index] && i != index)
+            return false;
+    }
+    return true;
+} 
+bool KiemTraSoNguyenTo(int x)
+{
+    if(x<2)
+        return false;
+    else
+        for(int j=2; j< sqrt(x); j++)
+        {
+            if(x % j == 0)
+                return false;
+        }
+        return true;
+}
+int DemSo(int *a, int n)
+{
+    int dem = 0;
+    for (int i = 0; i < n; i++){
+        if (KiemTraBiTrung(a, n, i))
+            if (KiemTraSoNguyenTo(a[i]))
+                dem++;
+    }
+    return dem;
+}
+int main()
+{   
+    int n;
+    cout << "Nhap so phan tu: ";
+    cin >> n;
+    int a[n];
+    nhap(a, n);
+    cout << DemSo(a, n);
+    return 0;
+}
