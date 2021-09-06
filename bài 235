@@ -1,0 +1,70 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+void nhap(int *a, int n)
+{
+    for (int i = 0; i < n ; i++){
+        cout << "Nhap phan tu thu " << i+1 << ": ";
+        cin >> a[i];
+    }
+}
+bool kiemtratrung(int *a, int n, int ViTri)
+{
+    for(int i = ViTri - 1; i >= 0; i--)
+    {
+        if(a[i]==a[ViTri])
+        {
+            return false;
+        }
+    }
+    return true;
+
+}
+void LietKe(int *a, int *b, int na, int nb)
+{
+    for(int i=0; i<na; i++)
+    {
+        if(kiemtratrung(a, na, i))
+        {
+            int flag=1;
+            for(int j=0; j<nb; j++)
+            {
+                if(a[i]==b[j])
+                {
+                    flag=0;
+                    break;
+                }
+            }
+            if(flag==1)
+                cout << a[i] << " ";
+        }
+    }
+        
+    for(int j=0; j<nb; j++)
+    {
+        if(kiemtratrung(b,nb,j))
+        {
+            int flag=1;
+            for(int i=0; i<na; i++)
+            {
+                if(a[i]==b[j])
+                {
+                    flag=0;
+                    break;
+                }
+            }
+            if(flag==1)
+                cout << b[j] << " ";
+        }
+    }
+
+}
+int main()
+{   
+    int na, nb;
+    cin >> na >> nb;
+    int a[na], b[nb];
+    nhap(a, na);
+    nhap(b, nb);
+    LietKe(a, b, na, nb);
+}
