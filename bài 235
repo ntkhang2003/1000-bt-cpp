@@ -67,4 +67,5 @@ int main()
     nhap(a, na);
     nhap(b, nb);
     LietKe(a, b, na, nb);
+    return 0;
 }
