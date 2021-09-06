@@ -1,0 +1,45 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+void nhap(int *a, int n)
+{
+    for (int i = 0; i < n ; i++){
+        cout << "Nhap phan tu thu " << i+1 << ": ";
+        cin >> a[i];
+    }
+}
+int DemSo(int *a, int *b, int na, int nb)
+{
+    int i, j, Start, flag, dem = 0;
+    for(i = 0; i < nb; i++)
+    {
+        if(a[0] == b[i] && nb - i >= na)  
+        {                                 
+            Start = i;            
+            flag = 1;
+            for(j = 0; j < na; j++)
+            {
+                if(a[j] != b[Start++])
+                {
+                    flag = 0;
+                    break;
+                }
+            }
+            if(flag == 1)
+            {
+                dem++;
+            }
+        }
+    }
+    return dem;
+}
+int main()
+{   
+    int na, nb;
+    cin >> na >> nb;
+    int a[na], b[nb];
+    nhap(a, na);
+    nhap(b, nb);
+    cout << DemSo(a, b, na, nb);
+    return 0;
+}
