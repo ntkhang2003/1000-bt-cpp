@@ -1,0 +1,55 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+void nhap(int *a, int n)
+{
+    for (int i = 0; i < n ; i++){
+        cout << "Nhap phan tu thu " << i+1 << ": ";
+        cin >> a[i];
+    }
+}
+void xuat(int *a, int n)
+{
+    for (int i = 0; i < n; i++){
+        cout << a[i] << " ";
+    }
+}
+void HoanVi(int &a, int &b)
+{
+    int temp = a;
+    a = b;
+    b = temp;
+}
+bool KiemTraSoNguyenTo(int x)
+{
+    if(x<2)
+        return false;
+    else
+        for(int j=2; j< sqrt(x); j++)
+        {
+            if(x % j == 0)
+                return false;
+        }
+        return true;
+}
+void SapXep(int *a, int n)
+{
+    for (int i = 0; i < n-1; i++){
+        for (int j = i+1; j < n; j++){
+            if (KiemTraSoNguyenTo(a[i]) && KiemTraSoNguyenTo(a[j]))
+                if (a[i] > a[j])
+                    HoanVi(a[i], a[j]);
+        }
+    }
+}
+int main()
+{   
+    int n;
+    cout << "Nhap so phan tu: ";
+    cin >> n;
+    int a[n];
+    nhap(a, n);
+    SapXep(a, n);
+    xuat(a, n);
+    return 0;
+}
