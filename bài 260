@@ -20,6 +20,15 @@ void HoanVi(int &a, int &b)
     a = b;
     b = temp;
 }
+void SapXepTangDan(int *a, int n)
+{
+    for (int i = 0; i < n-1; i++){
+        for (int j = i+1; j < n; j++){
+            if (a[i] < a[j])
+                HoanVi(a[i], a[j]);
+        }
+    }
+}
 void KiemTraBCoPhaiLaHoanViCuaA(int *a,int *b, int na, int nb)
 {
     if(na != nb)
