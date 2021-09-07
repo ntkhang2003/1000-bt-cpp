@@ -53,10 +53,13 @@ int main()
 {   
     int na, nb;
     cout << "Nhap so phan tu: ";
-    cin >> na, nb;
-    int a[na], b[nb];
+    cin >> na;
+    int a[na];
     nhap(a, na);
-    xuat(b, nb);
+    cout << "Nhap so phan tu: ";
+    cin >> nb;
+    int b[nb];
+    nhap(b, nb);
     KiemTraBCoPhaiLaHoanViCuaA(a, b, na, nb);
     return 0;
 }
