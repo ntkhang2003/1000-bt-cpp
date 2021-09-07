@@ -1,0 +1,39 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+void nhap(int *a, int n)
+{
+    for (int i = 0; i < n ; i++){
+        cout << "Nhap phan tu thu " << i+1 << ": ";
+        cin >> a[i];
+    }
+}
+void xuat(int *a, int n)
+{
+    for (int i = 0; i < n; i++){
+        cout << a[i] << " ";
+    }
+}
+void ThemPhanTu(int *a, int &n, int ViTriThem, int PhanTuThem)
+{
+    for (int i = n; i > ViTriThem; i--){
+        a[i] = a[i-1];
+    }
+    a[ViTriThem] = PhanTuThem;
+    n++;
+}
+int main()
+{   
+    int n, ViTriThem, PhanTuThem;
+    cout << "Nhap so phan tu: ";
+    cin >> n;
+    cout << "Nhap vi tri can them vao: ";
+    cin >> ViTriThem;
+    cout << "Nhap gia tri can them vao: ";
+    cin >> PhanTuThem;
+    int a[n];
+    nhap(a, n);
+    ThemPhanTu(a, n, ViTriThem, PhanTuThem);
+    xuat(a, n);
+    return 0;
+}
