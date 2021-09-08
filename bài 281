@@ -1,0 +1,73 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+void nhap(int *a, int &n)
+{
+    for (int i = 0; i < n ; i++){
+        cout << "Nhap phan tu thu " << i+1 << ": ";
+        cin >> a[i];
+    }
+}
+void xuat(int *a, int n)
+{
+    for (int i = 0; i < n; i++){
+        cout << a[i] << " ";
+    }
+}
+void DuaChanVeDau(int *a, int ViTriDoi)
+{
+    int tam = a[ViTriDoi];
+    for(int i = ViTriDoi; i > 0; i--)
+    {
+        a[i] = a[i - 1];
+    }
+    a[0] = tam;
+}
+
+void Dua0VaoGiua(int *a, int ViTriDoi, int ViTriChanCuoi)
+{
+    for(int i = ViTriDoi; i > ViTriChanCuoi; i--)
+    {
+        a[i] = a[i - 1];        
+    }
+    a[ViTriChanCuoi] = 0;
+}
+
+void DuaChanVeDauLeVeCuoi0NamGiuaMang(int *a, int n)
+{
+    int i, dem;
+    int ViTriChanCuoi = 0;
+    for(i = 0; i < n; i++)
+    {
+        if(a[i] % 2 == 0 && a[i] != 0)
+        {
+            DuaChanVeDau(a, i);
+        }
+    }
+    for(i = 0; i < n; i++)
+    {
+        if(a[i] % 2 != 0)
+        {
+            ViTriChanCuoi = i;
+            break;
+        }
+    }
+    for(i; i < n; i++)
+    {
+        if(a[i] == 0)
+        {
+            Dua0VaoGiua(a, i, ViTriChanCuoi);
+        }
+    }
+}
+int main()
+{   
+    int n, k;
+    cout << "Nhap so phan tu: ";
+    cin >> n;
+    int a[n];
+    nhap(a, n);
+    DuaChanVeDauLeVeCuoi0NamGiuaMang(a, n);
+    xuat(a, n);
+    return 0;
+}
