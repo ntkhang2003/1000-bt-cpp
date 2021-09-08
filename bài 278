@@ -1,0 +1,49 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+void nhap(float *a, int &n)
+{
+    for (int i = 0; i < n ; i++){
+        cout << "Nhap phan tu thu " << i+1 << ": ";
+        cin >> a[i];
+    }
+}
+void xuat(float *a, int n)
+{
+    for (int i = 0; i < n; i++){
+        cout << a[i] << " ";
+    }
+}
+void Xoa1PhanTu(float *a, int &n, int k)
+{
+    for (int i = k;i < (n-1); i++)
+    {
+        a[i]=a[i+1];
+    }
+    n--;
+}
+void XoaTheoDe(float *a, int &n)
+{
+    for(int i = 0; i < n; i++)
+    {
+        for(int j = i + 1; j < n; j++)
+        {
+            if(a[i] == a[j])
+            {
+                Xoa1PhanTu(a, n, j);
+                j--;
+            }
+        }
+    }
+}
+int main()
+{   
+    int n, k;
+    cout << "Nhap so phan tu: ";
+    cin >> n;
+    float a[n];
+    nhap(a, n);
+    XoaTheoDe(a, n);
+    xuat(a, n);
+    return 0;
+}
