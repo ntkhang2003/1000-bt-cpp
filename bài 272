@@ -37,7 +37,7 @@ void XoaMax(float *a, int &n)
     for (int i = 0; i < n; i++){
         if (a[i] == max)
             XoaPhanTu(a, n, i);
-            //i--;
+            i--;
     }
     
 }
