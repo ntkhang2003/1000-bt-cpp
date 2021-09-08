@@ -1,0 +1,56 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+void nhap(int *a, int &n)
+{
+    for (int i = 0; i < n ; i++){
+        cout << "Nhap phan tu thu " << i+1 << ": ";
+        cin >> a[i];
+    }
+}
+void xuat(int *a, int n)
+{
+    for (int i = 0; i < n; i++){
+        cout << a[i] << " ";
+    }
+}
+void TimMinMax(int *a, int n, int &max, int &min)
+{
+    max = a[0];
+    min = a[0];
+    for(int i = 1; i < n; i++)
+    {
+        if (a[i] > max){
+            max = a[i];    
+        }
+        if (a[i] < min){
+            min = a[i];    
+        } 
+    }
+}
+void DoiMinMax(int *a, int n, int max, int min)
+{
+    for(int i = 0; i < n; i++)
+    {
+        if(a[i] == max)
+        {
+            a[i] = min;
+        }
+        else if(a[i] == min)
+        {
+            a[i] = max;
+        }
+    }
+}
+int main()
+{   
+    int n, min, max;
+    cout << "Nhap so phan tu: ";
+    cin >> n;
+    int a[n];
+    nhap(a, n);
+    TimMinMax(a, n, min, max);
+    DoiMinMax(a, n, min, max);
+    xuat(a, n);
+    return 0;
+}
