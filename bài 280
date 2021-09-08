@@ -1,0 +1,46 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+void nhap(float *a, int &n)
+{
+    for (int i = 0; i < n ; i++){
+        cout << "Nhap phan tu thu " << i+1 << ": ";
+        cin >> a[i];
+    }
+}
+void xuat(float *a, int n)
+{
+    for (int i = 0; i < n; i++){
+        cout << a[i] << " ";
+    }
+}
+void DoiCho(float *a, int n, int ViTriDoi)
+{
+    for(int i = ViTriDoi; i > 0; i--)
+    {
+        a[i] = a[i - 1];      
+    }
+    a[0] = 1;
+}
+
+void Dua1VeDau(float *a, int n)
+{
+    for(int i = 0; i < n; i++)
+    {
+        if(a[i] == 1)
+        {
+            DoiCho(a, n, i);
+        }
+    }
+}
+int main()
+{   
+    int n, k;
+    cout << "Nhap so phan tu: ";
+    cin >> n;
+    float a[n];
+    nhap(a, n);
+    Dua1VeDau(a, n);
+    xuat(a, n);
+    return 0;
+}
