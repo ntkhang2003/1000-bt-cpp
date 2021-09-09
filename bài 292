@@ -1,0 +1,46 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+void nhap(float *a, int &n)
+{
+    for (int i = 0; i < n ; i++){
+        cout << "Nhap phan tu thu " << i+1 << ": ";
+        cin >> a[i];
+    }
+}
+void xuat(float *a, int n)
+{
+    for (int i = 0; i < n; i++){
+        cout << a[i] << " ";
+    }
+}
+void ThaySoGanNhat(float &n)
+{
+    int phannguyen = (int)(n);
+    float phanle = n - phannguyen;
+    if(phanle <= 0.5)      
+    {
+        n = (float)phannguyen;
+    }
+    else
+    {
+        n = (float)phannguyen + 1;
+    }
+}
+void ThayDoi(float *a, int n)
+{
+    for (int i = 0; i < n; i++){
+        ThaySoGanNhat(a[i]);
+    }
+}
+int main()
+{   
+    int n;
+    cout << "Nhap so phan tu: ";
+    cin >> n;
+    float a[n];
+    nhap(a, n);
+    ThayDoi(a, n);
+    xuat(a, n);
+    return 0;
+}
