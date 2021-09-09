@@ -17,12 +17,9 @@ void xuat(int *a, int n)
 void LietKeTatCaMangCon(int *a,int n)
 {
     int ChieuDai;
-    for(int i = 0; i < n; i++)
-    {
-        for(ChieuDai = i; ChieuDai < n; ChieuDai++)
-        {
-            for(int j = i; j <= ChieuDai; j++)
-            {
+    for(int i = 0; i < n; i++){
+        for(ChieuDai = i /* i+1 : mảng con có 2 phần tử */ ; ChieuDai < n; ChieuDai++){
+            for(int j = i; j <= ChieuDai; j++){
                 cout << a[j] << " ";
             }
             cout << endl;
