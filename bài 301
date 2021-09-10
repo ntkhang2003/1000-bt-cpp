@@ -1,0 +1,47 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+void nhap(int *a, int &n)
+{
+    for (int i = 0; i < n ; i++){
+        cout << "Nhap phan tu thu " << i+1 << ": ";
+        cin >> a[i];
+    }
+}
+void xuat(int *a, int n)
+{
+    for (int i = 0; i < n; i++){
+        cout << a[i] << " ";
+    }
+}
+bool KiemTra(int *a, int *b, int na, int nb)
+{
+    for (int i = 0; i < nb; i++){
+        if (b[i] == a[0]){
+            int start = i;
+            for (int j = 0; j < na; j++){
+                if (a[j] != b[start++]){
+                    return false;
+                }
+            }
+        }
+    }
+    return true;
+}
+int main()
+{   
+    int na, nb;
+    cout << "Nhap so phan tu: ";
+    cin >> na;
+    int a[na];
+    nhap(a, na);
+    cout << "Nhap so phan tu: ";
+    cin >> nb;
+    int b[nb];
+    nhap(b, nb);
+    if (KiemTra(a, b, na, nb) == 1){
+        cout << "Mang A la mang con cua B";
+    }
+    else cout << "Mang A ko la mang con cua B";
+    return 0;
+}
