@@ -1,0 +1,71 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+void nhap(int *a, int &n)
+{
+    for (int i = 0; i < n ; i++){
+        cout << "Nhap phan tu thu " << i+1 << ": ";
+        cin >> a[i];
+    }
+}
+void xuat(int *a, int n)
+{
+    for (int i = 0; i < n; i++){
+        cout << a[i] << " ";
+    }
+}
+void XuatMangCon(int *b, int nb)
+{
+    for(int i = 0; i < nb; i++)
+    {
+        cout << b[i] << " ";
+    }
+}
+
+int TongMangCon(int *b, int nb)
+{
+    int Tong = 0;
+    for(int i = 0; i < nb; i++)
+    {
+        Tong += b[i];
+    }
+    return Tong;
+}
+void TimMang(int *a, int n, int M)
+{
+    int ChieuDai, Tong, flag = 1;
+    int b[1000], nb;
+    for(int i = 0; i < n; i++)
+    {
+        for(ChieuDai = i; ChieuDai < n; ChieuDai++)
+        {
+            nb = 0;
+            for(int j = i; j <= ChieuDai; j++)
+            {
+                b[nb] = a[j];
+                nb++;
+            }
+            if (TongMangCon(b, nb) == M)
+            {
+                XuatMangCon(b, nb);
+                flag = 0;
+                break;
+            }
+        }
+        if (flag == 0){
+            break;
+        }
+    }
+}
+int main()
+{   
+    int n, M;
+    cout << "Nhap so phan tu: ";
+    cin >> n;
+    int a[n];
+    nhap(a, n);
+    cout << "Nhap so M: ";
+    cin >> M;
+    TimMang(a, n, M);
+    return 0;
+}
