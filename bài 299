@@ -61,7 +61,7 @@ void LietKeDayConToanDuong(float *a, int n)
                 b[nb] = a[j];
                 nb++;
             }
-            if(KiemTraTangDan(b, nb) == 1 && KiemTraDuong(b, nb))
+            if(KiemTraTangDan(b, nb) == 1 && KiemTraDuong(b, nb) == 1)
             {
                 XuatMangCon(b, nb); 
             }
