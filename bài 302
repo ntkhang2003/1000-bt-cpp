@@ -1,0 +1,50 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+void nhap(int *a, int &n)
+{
+    for (int i = 0; i < n ; i++){
+        cout << "Nhap phan tu thu " << i+1 << ": ";
+        cin >> a[i];
+    }
+}
+void xuat(int *a, int n)
+{
+    for (int i = 0; i < n; i++){
+        cout << a[i] << " ";
+    }
+}
+int DemSoLan(int *a, int *b, int na, int nb)
+{
+    int start, flag, count = 0;
+    for(int i = 0; i < nb; i++){
+        if(a[0] == b[i] && nb - i >= na){                                   
+            start = i;           
+            flag = 1;
+            for(int j = 0; j < na; j++){
+                if(a[j] != b[start++]){
+                    flag = 0;
+                    break;
+                }
+            }
+            if(flag == 1){
+                count++;
+            }
+        }
+    }
+    return count;
+}
+int main()
+{   
+    int na, nb;
+    cout << "Nhap so phan tu: ";
+    cin >> na;
+    int a[na];
+    nhap(a, na);
+    cout << "Nhap so phan tu: ";
+    cin >> nb;
+    int b[nb];
+    nhap(b, nb);
+    cout << DemSoLan(a, b, na, nb);
+    return 0;
+}
