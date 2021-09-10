@@ -1,0 +1,71 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+void nhap(float *a, int &n)
+{
+    for (int i = 0; i < n ; i++){
+        cout << "Nhap phan tu thu " << i+1 << ": ";
+        cin >> a[i];
+    }
+}
+void xuat(float *a, int n)
+{
+    for (int i = 0; i < n; i++){
+        cout << a[i] << " ";
+    }
+}
+bool KiemTraToanDuong(float *a, int i, int SoCuoi)
+{
+    for(int j=i; j<= SoCuoi; j++)
+    {
+        if(a[j]<0)
+            return false;
+    }
+    return true;
+}
+
+
+void TongLonNhat(float *a, int n, int &index1, int &index2)
+{
+    int tonglonnhat=0;
+    for(int i=0; i<n; i++)
+    {
+        for(int SoCuoi=i; SoCuoi<n; SoCuoi++)
+        {
+            if(KiemTraToanDuong(a, i, SoCuoi))
+            {
+                int tong=0;
+                for(int j=i; j<=SoCuoi;j++)
+                {
+                    tong+=a[j];
+                }
+                if(tong>tonglonnhat)
+                {
+                    tonglonnhat=tong;
+                    index1=i;
+                    index2=SoCuoi;
+                }
+            }
+        }
+    }
+}
+
+void XuatMang(float *a, int index1, int index2)
+{
+    for(int i=index1; i<=index2; i++)
+    {
+        cout << a[i]<<" ";
+
+    }
+}
+int main()
+{   
+    int n, index1, index2;
+    cout << "Nhap so phan tu: ";
+    cin >> n;
+    float a[n];
+    nhap(a, n);
+    TongLonNhat(a, n, index1, index2);
+    XuatMang(a, index1, index2);
+    return 0;
+}
