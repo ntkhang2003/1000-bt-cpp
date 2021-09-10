@@ -1,0 +1,67 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+void nhap(float *a, int &n)
+{
+    for (int i = 0; i < n ; i++)
+    {
+        cout << "Nhap phan tu thu " << i+1 << ": ";
+        cin >> a[i];
+    }
+}
+void xuat(float *a, int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        cout << a[i] << " ";
+    }
+}
+bool KiemTraToanDuong(float *a,int n, int index, int ChieuDai)
+{
+    for (int i = index; i <= ChieuDai; i++)
+    {
+        if (a[i] < 0)
+            return false;
+    }
+    return true;
+}
+int MangConDuongDaiNhat(float *a,int n)
+{
+    int Max=1;
+    for (int i = 0; i < n; i++)
+    {
+        for (int ChieuDai = i; ChieuDai < n; ChieuDai++)
+        {
+            if (KiemTraToanDuong(a, n, i, ChieuDai) && (ChieuDai-i+1) > Max)
+            {
+                Max = ChieuDai-i+1;
+            }
+        }
+    }
+    return Max;
+}
+void XuatMangCon(float *a, int n)
+{
+    int Max = MangConDuongDaiNhat(a,n);
+    for (int i = 0; i < n; i++)
+    {
+        if (Max+i-1 < n && KiemTraToanDuong(a, n, i, Max+i-1))
+        {
+            for(int j = i; j < i+Max; j++)
+            {
+                cout << a[j] << " ";
+            }
+            cout << endl;
+        }
+    }
+}
+int main()
+{   
+    int n;
+    cout << "Nhap so phan tu: ";
+    cin >> n;
+    float a[n];
+    nhap(a, n);
+    XuatMangCon(a, n);
+    return 0;
+}
