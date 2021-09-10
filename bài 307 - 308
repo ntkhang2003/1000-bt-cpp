@@ -1,0 +1,47 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+void nhap(int *a, int &n)
+{
+    for (int i = 0; i < n ; i++){
+        cout << "Nhap phan tu thu " << i+1 << ": ";
+        cin >> a[i];
+    }
+}
+void xuat(int *a, int n)
+{
+    for (int i = 0; i < n; i++){
+        cout << a[i] << " ";
+    }
+}
+void XuatMangCon(int *b, int nb)
+{
+    for(int i = 0; i < nb; i++)
+    {
+        cout << b[i] << " ";
+    }
+    cout << endl;
+}
+void TaoMangCon(int *a, int n)
+{
+    int b[1000], nb = 0;
+    for (int i = 0; i < n; i++)
+    {
+        if (a[i] % 2 != 0)
+        {
+            b[nb] = a[i];
+            nb++;
+        }
+    }
+    XuatMangCon(b, nb);
+}
+int main()
+{   
+    int n;
+    cout << "Nhap so phan tu: ";
+    cin >> n;
+    int a[n];
+    nhap(a, n);
+    TaoMangCon(a, n);
+    return 0;
+}
