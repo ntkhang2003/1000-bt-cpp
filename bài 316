@@ -1,0 +1,49 @@
+#include <iostream>
+using namespace std;
+void nhap(int a[][100], int &m, int &n)
+{
+	for (int i = 0; i < m; i++){
+		for (int j = 0; j < n; j++){
+			cout << "Nhap a[" << i << "][" << j << "] = ";
+			cin >> a[i][j];
+		}
+	}
+}
+void xuat(int a[][100], int m, int n)
+{
+	for (int i = 0; i < m; i++){
+		for (int j = 0; j < n; j++){
+			cout << a[i][j] << " ";
+		}
+		cout << "\n";
+	}	
+}
+bool KiemTraDK(int a[][100], int m, int n)
+{
+	for (int i = 0; i < m; i++){
+		for (int j = 0; j < n; j++){
+			if (a[i][j] % 2 == 0 && a[i][j] < 2015){
+				return true;		
+			}
+		}
+	}
+	return false;
+}
+int main()
+{
+	int a[100][100], m, n;
+	cout << "Nhap so dong: ";
+	cin >> m;
+	cout << "Nhap so cot : ";
+	cin >> n;
+	nhap(a, m, n);
+	xuat(a, m, n);
+	int flag = KiemTraDK(a, m, n);
+	if (flag == 1){
+		cout << "Thoa de bai";
+	}
+	else { 
+		cout << "Ko thoa de"; 
+	}
+	return 0;
+}	
