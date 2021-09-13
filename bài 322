@@ -1,0 +1,43 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+void nhap(float a[][100], int dong, int cot)
+{
+	for (int i = 0; i < dong; i++){
+		for (int j = 0; j < cot; j++){
+			cout << "Nhap a[" << i << "][" << j << "] = ";
+			cin >> a[i][j];
+		}
+	}
+}
+void xuat(float a[][100], int dong, int cot)
+{
+	for (int i = 0; i < dong; i++){
+		for (int j = 0; j < cot; j++){
+			cout << a[i][j] << " ";
+		}
+		cout << "\n";
+	}	
+}
+int TinhTong(float a[][100], int x, int cot)
+{
+	int sum = 0;
+	for (int j = 0; j < cot; j++){
+		sum += a[x][j];
+	}
+	return sum;
+}
+int main()
+{
+	float a[100][100], dong, cot, x;
+	cout << "Nhap so dong: ";
+	cin >> dong;
+	cout << "Nhap so cot : ";
+	cin >> cot;
+	cout << "Nhap so dong can tinh tong: ";
+	cin >> x;
+	nhap(a, dong, cot);
+	xuat(a, dong, cot);
+	cout << "Tong cua dong can tinh la: " << TinhTong(a, x, cot);
+	return 0;
+}	
