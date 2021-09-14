@@ -1,0 +1,55 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+void nhap(float a[][100], int dong, int cot)
+{
+	for (int i = 0; i < dong; i++){
+		for (int j = 0; j < cot; j++){
+			cout << "Nhap a[" << i << "][" << j << "] = ";
+			cin >> a[i][j];
+		}
+	}
+}
+void xuat(float a[][100], int dong, int cot)
+{
+	for (int i = 0; i < dong; i++){
+		for (int j = 0; j < cot; j++){
+			cout << a[i][j] << " ";
+		}
+		cout << "\n";
+	}	
+}
+int DemSoLuongCacGiaTriPhanBiet(float a[][100], int dong, int cot)
+{
+    int n = dong * cot;
+    int dem = 0, flag;
+    for(int i = 0; i < n; i++)
+    {
+        flag = 1;
+        for(int j = i + 1; j < n; j++)
+        {
+            if(a[j / cot][j % cot] == a[i / cot][i % cot])
+            {
+                flag = 0;
+                break;
+            }
+        }
+        if(flag == 1)
+        {
+            dem++;
+        }
+    }
+    return dem;
+}
+int main()
+{
+	float a[100][100], dong, cot;
+	cout << "Nhap so dong: ";
+	cin >> dong;
+	cout << "Nhap so cot : ";
+	cin >> cot;
+	nhap(a, dong, cot);
+	xuat(a, dong, cot);
+	cout << "So luong cac gia tri phan biet la: " << DemSoLuongCacGiaTriPhanBiet(a, dong, cot);
+	return 0;
+}	
