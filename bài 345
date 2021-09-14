@@ -1,0 +1,72 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+void nhap(float a[][100], int dong, int cot)
+{
+	for (int i = 0; i < dong; i++){
+		for (int j = 0; j < cot; j++){
+			cout << "Nhap a[" << i << "][" << j << "] = ";
+			cin >> a[i][j];
+		}
+	}
+}
+void xuat(float a[][100], int dong, int cot)
+{
+	for (int i = 0; i < dong; i++){
+		for (int j = 0; j < cot; j++){
+			cout << a[i][j] << " ";
+		}
+		cout << "\n";
+	}	
+}
+bool KiemTraPhanTuCucTri(float a[][100], int sodong, int socot, int dong, int cot)
+{
+    bool CucDai = true, CucTieu = true;  
+    for(int i = -1; i <= 1; i++)
+    {
+        for(int j = -1; j <= 1; j++)
+        {
+            if(dong + i >= 0 && cot + j >= 0 && dong + i < sodong && cot + j < socot && !(i == 0 && j == 0))
+            {
+                if (a[dong][cot] <= a[dong + i][cot + j])
+                {
+                    CucDai = false;
+                }
+                if (a[dong][cot] >= a[dong + i][cot + j])
+                {
+                    CucTieu = false;
+                }
+                if(!CucDai && !CucTieu) break;
+            }
+        }
+    }
+    if(!CucDai && !CucTieu) return false;
+    return true;
+}
+float TinhTongCacPhanTuCucTri(float a[][100], int dong, int cot)
+{
+    float tong = 0;
+    for(int i = 0; i < dong; i++)
+    {
+        for(int j = 0; j < cot; j++)
+        {
+            if(KiemTraPhanTuCucTri(a, dong, cot, i, j))
+            {
+                tong += a[i][j];
+            }
+        }
+    }
+    return tong;
+}
+int main()
+{
+	float a[100][100], dong, cot;
+	cout << "Nhap so dong: ";
+	cin >> dong;
+	cout << "Nhap so cot : ";
+	cin >> cot;
+	nhap(a, dong, cot);
+	xuat(a, dong, cot);
+	cout << "Tong cac phan tu cuc tri la: " << TinhTongCacPhanTuCucTri(a, dong, cot);
+	return 0;
+}
