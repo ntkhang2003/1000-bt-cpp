@@ -19,7 +19,7 @@ void xuat(float a[][100], int dong, int cot)
 		cout << "\n";
 	}	
 }
-bool KiemTraCoPhaiPhanTuHoangHau(int a[][100], int vtdong, int vtcot, int dong, int cot)
+bool KiemTraCoPhaiPhanTuHoangHau(float a[][100], int vtdong, int vtcot, int dong, int cot)
 {
     int x = a[vtdong][vtcot];
     for(int i = 0; i < cot; i++)
@@ -76,7 +76,7 @@ bool KiemTraCoPhaiPhanTuHoangHau(int a[][100], int vtdong, int vtcot, int dong, 
     return true;
 }
 
-int DemSoLuongPhanTuHoangHau(int a[][100], int dong, int cot)
+int DemSoLuongPhanTuHoangHau(float a[][100], int dong, int cot)
 {
     int dem = 0;
     for(int i = 0; i < dong; i++)
