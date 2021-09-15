@@ -1,0 +1,105 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+void nhap(float a[][100], int dong, int cot)
+{
+	for (int i = 0; i < dong; i++){
+		for (int j = 0; j < cot; j++){
+			cout << "Nhap a[" << i << "][" << j << "] = ";
+			cin >> a[i][j];
+		}
+	}
+}
+void xuat(float a[][100], int dong, int cot)
+{
+	for (int i = 0; i < dong; i++){
+		for (int j = 0; j < cot; j++){
+			cout << a[i][j] << " ";
+		}
+		cout << "\n";
+	}	
+}
+bool KiemTraCoPhaiPhanTuHoangHau(int a[][100], int vtdong, int vtcot, int dong, int cot)
+{
+    int x = a[vtdong][vtcot];
+    for(int i = 0; i < cot; i++)
+    {
+        if(a[vtdong][i] > x)
+        {
+            return false;
+        }
+    }
+    for(int j = 0; j < dong; j++)
+    {
+        if(a[j][vtcot] > x)
+        {
+            return false;
+        }
+    }
+    int vtdong1 = vtdong + 1;
+    int vtcot1 = vtcot + 1;
+    while (vtcot1 + 1 < cot && vtdong1 < vtdong)
+    {
+        if (a[vtcot1][vtdong1] > x)
+            return false;
+        vtcot1++;
+        vtdong1++;
+    }
+    vtdong1 = vtdong - 1;
+    vtcot1 = vtcot - 1;
+    while (vtcot1 - 1 >= 0 && vtdong1 >= 0)
+    {
+        if (a[vtcot1][vtdong1] > x)
+            return false;
+        vtcot1--;
+        vtdong1--;
+    }
+    vtdong1 = vtdong + 1;
+    vtcot1 = vtcot - 1;
+    while (vtcot1 - 1 >= 0 && vtdong1 < dong)
+    {
+        if (a[vtcot1][vtdong1] > x)
+            return false;
+        vtdong1++;
+        vtcot1--;
+    }
+    vtdong1 = vtdong - 1;
+    vtcot1 = vtcot + 1;
+
+    while (vtdong1 - 1 >= 0 && vtcot1 < cot)
+    {
+        if (a[vtcot1][vtdong1] > x)
+            return false;
+        vtdong1--;
+        vtcot1++;
+    }
+    return true;
+}
+
+int DemSoLuongPhanTuHoangHau(int a[][100], int dong, int cot)
+{
+    int dem = 0;
+    for(int i = 0; i < dong; i++)
+    {
+        for(int j = 0; j < cot; j++)
+        {
+            if(KiemTraCoPhaiPhanTuHoangHau(a, i, j, dong, cot) == true)
+            {
+                dem++;
+            }
+        }
+    }
+    return dem;
+}
+int main()
+{
+	float a[100][100], dong, cot;
+	cout << "Nhap so dong: ";
+	cin >> dong;
+	cout << "Nhap so cot : ";
+	cin >> cot;
+	nhap(a, dong, cot);
+	xuat(a, dong, cot);
+	cout << "So luong phan tu hoang hau la : " << DemSoLuongPhanTuHoangHau(a, dong, cot);
+	return 0;
+}
