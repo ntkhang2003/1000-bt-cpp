@@ -1,0 +1,64 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+void nhap(float a[][100], int dong, int cot)
+{
+	for (int i = 0; i < dong; i++){
+		for (int j = 0; j < cot; j++){
+			cout << "Nhap a[" << i << "][" << j << "] = ";
+			cin >> a[i][j];
+		}
+	}
+}
+void xuat(float a[][100], int dong, int cot)
+{
+	for (int i = 0; i < dong; i++){
+		for (int j = 0; j < cot; j++){
+			cout << a[i][j] << " ";
+		}
+		cout << "\n";
+	}	
+}
+bool KiemTraNguyenTo(int x)
+{
+    if (x < 2)
+        return false;
+    else if (x > 2)
+        for (int i = 2; i <= sqrt(x); i++){
+            if (x & i == 0)
+                return false;
+        }
+        return true;
+}
+void LietKeDongChuaSoNguyenTo(float a[][100], int dong, int cot)
+{
+    for(int i = 0; i < dong; i++)
+    {
+        int flag = 0;
+        for(int j = 0; j < cot; j++)
+        {
+            if(KiemTraNguyenTo(a[i][j]))
+            {
+                flag = 1;
+                break;
+            }
+        }
+        if(flag == 1)
+        {
+            cout << i << " "; 
+        }    
+    }
+}
+int main()
+{
+	float a[100][100], dong, cot;
+	cout << "Nhap so dong: ";
+	cin >> dong;
+	cout << "Nhap so cot : ";
+	cin >> cot;
+	nhap(a, dong, cot);
+	xuat(a, dong, cot);
+	cout << "Cac dong co chua so nguyen to la: ";
+    LietKeDongChuaSoNguyenTo(a, dong, cot);
+	return 0;
+}
