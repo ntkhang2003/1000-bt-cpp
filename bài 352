@@ -1,0 +1,51 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+void nhap(float a[][100], int dong, int cot)
+{
+	for (int i = 0; i < dong; i++){
+		for (int j = 0; j < cot; j++){
+			cout << "Nhap a[" << i << "][" << j << "] = ";
+			cin >> a[i][j];
+		}
+	}
+}
+void xuat(float a[][100], int dong, int cot)
+{
+	for (int i = 0; i < dong; i++){
+		for (int j = 0; j < cot; j++){
+			cout << a[i][j] << " ";
+		}
+		cout << "\n";
+	}	
+}
+void KiemTra(float a[][100], int x, int cot)
+{
+    int flag = 1;
+    for (int j = 0; j < cot - 1; j++){
+        if (a[x][j] >= a[x][j + 1]){
+            flag = 0;
+            break;
+        }
+    }
+    if (flag == 1){
+        cout << "Dong " << x << " tang dan";
+    }
+    else {
+        cout << "Dong " << x << " khong tang dan";
+    }
+}
+int main()
+{
+	float a[100][100], dong, cot, x;
+	cout << "Nhap so dong: ";
+	cin >> dong;
+	cout << "Nhap so cot : ";
+	cin >> cot;
+	cout << "Nhap so dong can kiem tra: ";
+	cin >> x;
+	nhap(a, dong, cot);
+	xuat(a, dong, cot);
+	KiemTra(a, x, cot);
+	return 0;
+}
