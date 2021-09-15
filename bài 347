@@ -1,0 +1,74 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+void nhap(float a[][100], int dong, int cot)
+{
+	for (int i = 0; i < dong; i++){
+		for (int j = 0; j < cot; j++){
+			cout << "Nhap a[" << i << "][" << j << "] = ";
+			cin >> a[i][j];
+		}
+	}
+}
+void xuat(float a[][100], int dong, int cot)
+{
+	for (int i = 0; i < dong; i++){
+		for (int j = 0; j < cot; j++){
+			cout << a[i][j] << " ";
+		}
+		cout << "\n";
+	}	
+}
+bool TimPhanTuNhoNhatDong(float a[][100], int vtdong, int vtcot, int dong, int cot)
+{
+    int x = a[vtdong][vtcot];
+    for(int i = 0; i < cot; i++)
+    {
+        if(a[vtdong][i] < x)
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
+bool TimPhanTuLonNhatCot(float a[][100], int vtdong, int vtcot, int dong, int cot)
+{
+    int x = a[vtdong][vtcot];
+    for(int j = 0; j < dong; j++)
+    {
+        if(a[j][vtcot] > x)
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
+void DemSoPhanTuYenNgua(float a[][100], int dong, int cot)
+{
+    int dem = 0;
+    for(int i = 0; i < dong; i++)
+    {
+        for(int j = 0; j < cot; j++)
+        {
+            if(TimPhanTuNhoNhatDong(a, i, j, dong, cot) && TimPhanTuLonNhatCot(a, i, j, dong, cot))
+            {
+                dem++;
+            }
+        }
+    }
+    cout << "So phan tu yen ngua la: "<< dem;
+}
+int main()
+{
+	float a[100][100], dong, cot;
+	cout << "Nhap so dong: ";
+	cin >> dong;
+	cout << "Nhap so cot : ";
+	cin >> cot;
+	nhap(a, dong, cot);
+	xuat(a, dong, cot);
+	DemSoPhanTuYenNgua(a, dong, cot);
+	return 0;
+}
