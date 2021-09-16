@@ -1,0 +1,66 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+void nhap(int a[][100], int dong, int cot)
+{
+	for (int i = 0; i < dong; i++){
+		for (int j = 0; j < cot; j++){
+			cout << "Nhap a[" << i << "][" << j << "] = ";
+			cin >> a[i][j];
+		}
+	}
+}
+void xuat(int a[][100], int dong, int cot)
+{
+	for (int i = 0; i < dong; i++){
+		for (int j = 0; j < cot; j++){
+			cout << a[i][j] << " ";
+		}
+		cout << "\n";
+	}	
+}
+int DemSoLanXuatHienCuaX(int a[][100], int dong, int cot, int x)
+{
+    int temp = 0;
+    for(int i = 0; i < dong; i++)
+    {
+        for(int j = 0; j < cot; j++)
+        {
+            if(a[i][j] == x)
+            {
+                temp++;
+            }
+        }
+    }
+    return temp;
+}
+int TimGiaTriXuatHienNhieuNhat(int a[][100], int dong, int cot)
+{
+    int temp1, temp = DemSoLanXuatHienCuaX(a, dong, cot, a[0][0]), index1 = 0, index2 = 0;
+    for(int i = 0; i < dong; i++)
+    {
+        for(int j = 0; j < cot; j++)
+        {
+            temp1 = DemSoLanXuatHienCuaX(a, dong, cot, a[i][j]);
+            if(temp < temp1)
+            {
+                temp = temp1;
+                index1 = i;
+                index2 = j;
+            }
+        }
+    }
+    return a[index1][index2];
+}
+int main()
+{
+	int a[100][100], dong, cot;
+	cout << "Nhap so dong: ";
+	cin >> dong;
+	cout << "Nhap so cot : ";
+	cin >> cot;
+	nhap(a, dong, cot);
+	xuat(a, dong, cot);
+	cout << TimGiaTriXuatHienNhieuNhat(a, dong, cot);
+	return 0;
+}
