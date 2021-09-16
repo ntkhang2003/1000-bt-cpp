@@ -59,6 +59,6 @@ int main()
 	nhap(a, dong, cot);
 	xuat(a, dong, cot);
 	cout << "Cac dong co chua so nguyen to la: ";
-    LietKeDongChuaSoNguyenTo(a, dong, cot);
+        LietKeDongChuaSoNguyenTo(a, dong, cot);
 	return 0;
 }
