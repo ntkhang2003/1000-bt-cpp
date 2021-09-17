@@ -52,7 +52,6 @@ int TimGiaTriXuatHienNhieuNhat(int a[][100], int dong, int cot)
     }
     return a[index1][index2];
 }
-
 int main()
 {
 	int a[100][100], dong, cot;
