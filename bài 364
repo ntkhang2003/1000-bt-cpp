@@ -1,0 +1,81 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+void NhapMang(int arr[][100], int &row, int &col)
+{
+    for(int i=0; i<row; i++)
+    {
+        for(int j=0; j<col; j++)
+        {
+            cout << "Nhap a[" << i << "][" << j << "] = ";
+            cin >> arr[i][j];
+        }
+    }
+}
+
+void XuatMang(int arr[][100], int row, int col)
+{
+    for(int i=0; i<row; i++)
+    {
+        for(int j=0; j<col; j++)
+        {
+            cout << arr[i][j] << " ";
+        }
+        cout << endl;
+    }
+}
+int KiemTraMaTranCon(int arr1[][100], int arr2[][100], int row1, int row2, int col1, int col2)
+{
+    int irow1, icol1;
+    int irow2, icol2;
+    bool flg;
+    int cnt = 0;
+    for (irow2 = 0; irow2 <= row2 - row1; irow2++)
+    {
+        for (icol2 = 0; icol2 <= col2 - col1; icol2++)
+        {
+            flg = true;
+            for (irow1 = 0; irow1 < row1; irow1++)
+            {
+                for (icol1 = 0; icol1 < col1; icol1++)
+                {
+                    if (arr1[irow1][icol1] != arr2[irow2 + irow1][icol2 + icol1])
+                    {
+                        flg = false;
+                        break;
+                    }
+                }
+                if (flg == false)
+                {
+                    break;
+                }
+            }
+            if (flg == true)
+            {
+                cnt++;
+            }
+        }
+    }
+    return cnt;
+}
+int main()
+{
+    int row1, row2, col1, col2;
+    cout << "Nhap so dong va cot mang 1: ";
+    cin >> row1 >> col1;
+    int arr1[100][100];
+    NhapMang(arr1, row1, col1);
+    cin >> row2 >> col2;
+    cout << "Nhap so dong va cot mang 2: ";
+    int arr2[100][100];
+    NhapMang(arr2, row2, col2);
+    XuatMang(arr1, row1, col1);
+    XuatMang(arr2, row2, col2);
+    if(KiemTraMaTranCon(arr1, arr2, row1, row2, col1, col2) != 0)
+        cout << "Yes";
+    else 
+        cout << "No";
+    return 0;
+}
+
