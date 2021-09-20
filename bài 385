@@ -19,35 +19,28 @@ void xuat(int a[][100], int dong, int cot)
 		cout << "\n";
 	}	
 }
-int TinhTong(int a[], int cot)
-{
-    int Tong = 0;
-    for (int i = 0; i < cot; i++)
-    {
-        Tong += a[i];
-    }
-    return Tong;
-}
-
 void LietKeCacDongCoTongLonNhat(int a[][100], int dong, int cot)
 {
     int b[100];
-    for (int i = 0; i < dong; i++)
+    for(int i = 0; i < dong; i++)
     {
-        b[i] = TinhTong(a[i], cot);
+        for(int j = 0; j < cot; j++)
+        {
+            b[i] += a[i][j];
+        }
     }
     int Max = b[0];
-    for (int i = 1; i < dong; i++)
+    for(int i = 1; i < dong; i++)
     {
         if (b[i] > Max)
-            Max = b[i];
-    }
-    for (int i = 0; i < dong; i++)
-    {
-        if(Max == b[i])
-        {
-            cout << "Dong co tong ptu lon nhat la " << i << ": " << Max; 
-        }
+			Max = b[i];
+    } 
+    for (int i = 0; i < dong ;i++) 
+    { 
+        if (Max == b[i]) 
+        { 
+            cout << "Dong co tong ptu lon nhat la " << i << ": " << Max;  
+        } 
     }
 }
 int main()
@@ -59,6 +52,6 @@ int main()
 	cin >> cot;
 	nhap(a, dong, cot);
 	xuat(a, dong, cot);
-    LietKeCacDongCoTongLonNhat(a, dong, cot);
+    	LietKeCacDongCoTongLonNhat(a, dong, cot);
 	return 0;
 }
