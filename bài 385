@@ -1,0 +1,64 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+void nhap(int a[][100], int dong, int cot)
+{
+	for (int i = 0; i < dong; i++){
+		for (int j = 0; j < cot; j++){
+			cout << "Nhap a[" << i << "][" << j << "] = ";
+			cin >> a[i][j];
+		}
+	}
+}
+void xuat(int a[][100], int dong, int cot)
+{
+	for (int i = 0; i < dong; i++){
+		for (int j = 0; j < cot; j++){
+			cout << a[i][j] << " ";
+		}
+		cout << "\n";
+	}	
+}
+int TinhTong(int a[], int cot)
+{
+    int Tong = 0;
+    for (int i = 0; i < cot; i++)
+    {
+        Tong += a[i];
+    }
+    return Tong;
+}
+
+void LietKeCacDongCoTongLonNhat(int a[][100], int dong, int cot)
+{
+    int b[100];
+    for (int i = 0; i < dong; i++)
+    {
+        b[i] = TinhTong(a[i], cot);
+    }
+    int Max = b[0];
+    for (int i = 1; i < dong; i++)
+    {
+        if (b[i] > Max)
+            Max = b[i];
+    }
+    for (int i = 0; i < dong; i++)
+    {
+        if(Max == b[i])
+        {
+            cout << "Dong co tong ptu lon nhat la " << i << ": " << Max; 
+        }
+    }
+}
+int main()
+{
+	int a[100][100], dong, cot;
+	cout << "Nhap so dong: ";
+	cin >> dong;
+	cout << "Nhap so cot : ";
+	cin >> cot;
+	nhap(a, dong, cot);
+	xuat(a, dong, cot);
+    LietKeCacDongCoTongLonNhat(a, dong, cot);
+	return 0;
+}
