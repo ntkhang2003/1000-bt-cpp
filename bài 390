@@ -1,0 +1,69 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+void nhap(int a[][100], int dong, int cot)
+{
+	for (int i = 0; i < dong; i++){
+		for (int j = 0; j < cot; j++){
+			cout << "Nhap a[" << i << "][" << j << "] = ";
+			cin >> a[i][j];
+		}
+	}
+}
+void xuat(int a[][100], int dong, int cot)
+{
+	for (int i = 0; i < dong; i++){
+		for (int j = 0; j < cot; j++){
+			cout << a[i][j] << " ";
+		}
+		cout << "\n";
+	}	
+}
+int TachChuSo(int x)
+{
+  	int tong=0;
+  	x=abs(x);
+  	do
+	{
+    	tong++;
+    	x = x /= 10;
+  	}
+  	while (x > 0);
+
+  	return tong;
+}
+
+void LietKe(int arr[][100], int row, int col)
+{
+  	int b[100];
+  	for (int j=0; j<col; j++)
+  	{
+    	for(int i=0; i<row; i++)
+    	{
+      		b[j]+= TachChuSo(arr[i][j]);
+    	}
+  	}
+  	int Max=b[0];
+  	for (int i=0; i<col; i++)
+  	{
+    	if(b[i] > Max)
+      		Max=b[i];
+  	}
+  	for (int i=0; i<col; i++)
+  	{
+    	if (b[i] == Max)
+      		cout << i << " ";
+  	}
+}
+int main()
+{
+	int a[100][100], dong, cot;
+	cout << "Nhap so dong: ";
+	cin >> dong;
+	cout << "Nhap so cot : ";
+	cin >> cot;
+	nhap(a, dong, cot);
+	xuat(a, dong, cot);
+  LietKe(a, dong, cot);
+	return 0;
+}
