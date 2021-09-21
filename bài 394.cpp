@@ -19,31 +19,25 @@ void xuat(int a[][100], int dong, int cot)
 		cout << "\n";
 	}	
 }
-void HoanVi(int &a, int &b)
-{
-	int temp = a;
-	a = b;
-	b = temp;
-}
 void DichXuongXoayVong(int a[][100], int dong, int cot, int k)
 {
 	for (int m = 0; m < k; m++)
 	{
 		int temp[100];
-    	for(int i = 0; i < cot; i++)
-    	{
-        	temp[i] = a[dong - 1][i];
-    	}
-    	for(int i = dong - 1; i >= 1; i--)
-    	{
-        	for(int j = 0; j < cot; j++)
-        	{
-            	a[i][j] = a[i - 1][j];
-        	}
+    		for(int i = 0; i < cot; i++)
+    		{
+        		temp[i] = a[dong - 1][i];
+		}
+    		for(int i = dong - 1; i >= 1; i--)
+    		{
+        		for(int j = 0; j < cot; j++)
+        		{
+            			a[i][j] = a[i - 1][j];
+        		}
    		}
-    	for(int i = 0; i < cot; i++)
-    	{
-        	a[0][i] = temp[i];
+    		for(int i = 0; i < cot; i++)
+    		{
+        		a[0][i] = temp[i];
 		}
 	}	
 }
