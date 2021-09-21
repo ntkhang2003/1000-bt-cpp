@@ -19,12 +19,6 @@ void xuat(int a[][100], int dong, int cot)
 		cout << "\n";
 	}	
 }
-void HoanVi(int &a, int &b)
-{
-	int temp = a;
-	a = b;
-	b = temp;
-}
 void DichTraiXoayVongTheoChieuKimDongHoCacGiaTriNamTrenBien(int a[][100], int dong, int cot)
 {
     int i, j;
