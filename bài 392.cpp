@@ -36,9 +36,10 @@ int main()
 	int a[100][100], dong, cot, n, m;
 	cout << "Nhap so dong: ";
 	cin >> dong;
-	cout << "Nhap so cot : ";
+	cout << "Nhap so cot: ";
 	cin >> cot;
 	nhap(a, dong, cot);
+	xuat(a, dong, cot);
 	cout << "Nhap 2 dong can hoan vi: ";
 	cin >> n >> m;
 	HoanVi2Dong(a, dong, cot, n, m);
