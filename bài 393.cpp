@@ -39,7 +39,7 @@ int main()
 	cout << "Nhap so cot : ";
 	cin >> cot;
 	nhap(a, dong, cot);
-	cout << "Mhap 2 cot can hoan vi: ";
+	cout << "Nhap 2 cot can hoan vi: ";
 	cin >> n >> m;
 	HoanVi2Cot(a, dong, cot, n, m);
 	xuat(a, dong, cot);
