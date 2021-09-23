@@ -33,7 +33,7 @@ void SapXepPhanTuTren1DongTangDanTuTraiSangPhai(int a[][100], int dong, int cot,
     {
         for(int j = i + 1; j < cot; j++)
         {
-            if(a[x][i] > a[x][j])
+            if(a[x][i] > a[x][j]) //(a[x][i] < a[x][j])
             {
                 HoanVi(a[x][i], a[x][j]);
             }
