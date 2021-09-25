@@ -1,37 +1,37 @@
 #include <iostream>
 #include <cmath>
 using namespace std;
-void nhap(int a[][100], int dong, int cot)
+void nhap(int a[][100], int n)
 {
-	for (int i = 0; i < dong; i++){
-		for (int j = 0; j < cot; j++){
+	for (int i = 0; i < n; i++){
+		for (int j = 0; j < n; j++){
 			cout << "Nhap a[" << i << "][" << j << "] = ";
 			cin >> a[i][j];
 		}
 	}
 }
-void xuat(int a[][100], int dong, int cot)
+void xuat(int a[][100], int n)
 {
-	for (int i = 0; i < dong; i++){
-		for (int j = 0; j < cot; j++){
+	for (int i = 0; i < n; i++){
+		for (int j = 0; j < n; j++){
 			cout << a[i][j] << " ";
 		}
 		cout << "\n";
 	}	
 	
 }
-void XuatPhanTu(int a[][100], int dong, int cot)
+void XuatPhanTu(int a[][100], int n)
 {
-	for (int i = 0; i < dong; i++)
+	for (int i = 0; i < n; i++)
 	{
-		for (int j = 0; j < cot; j++)
+		for (int j = 0; j < n; j++)
 		{
 			if (i == j) // đg chéo chính
 			// (i < j) tam giác trên đg chéo chính
 			// (i > j) tam giác dưới đg chéo chính
-			// (i + j == dong - 1) đg chéo phụ
-			// (i + j < dong - 1) tam giác trên đg chéo phụ
-			// (i + j > dong - 1) tam giác trên đg chéo chính
+			// (i + j == n - 1) đg chéo phụ
+			// (i + j < n - 1) tam giác trên đg chéo phụ
+			// (i + j > n - 1) tam giác trên đg chéo chính
 			{
 				cout << a[i][j] << " ";
 			}
@@ -40,13 +40,10 @@ void XuatPhanTu(int a[][100], int dong, int cot)
 }
 int main()
 {
-	int a[100][100], dong, cot;
-	cout << "Nhap so dong: ";
-	cin >> dong;
-	cout << "Nhap so cot: ";
-	cin >> cot;
-	nhap(a, dong, cot);
-	xuat(a, dong, cot);
-	XuatPhanTu(a, dong, cot);
+	int a[100][100], n;
+	cout << "Nhap n: ";
+	nhap(a, n);
+	xuat(a, n);
+	XuatPhanTu(a, n);
 	return 0;
 }
