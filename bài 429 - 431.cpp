@@ -42,6 +42,7 @@ int main()
 {
 	int a[100][100], n;
 	cout << "Nhap n: ";
+	cin >> n;
 	nhap(a, n);
 	xuat(a, n);
 	XuatPhanTu(a, n);
