@@ -1,31 +1,31 @@
 #include <iostream>
 #include <cmath>
 using namespace std;
-void nhap(int a[][100], int dong, int cot)
+void nhap(int a[][100], int n)
 {
-	for (int i = 0; i < dong; i++){
-		for (int j = 0; j < cot; j++){
+	for (int i = 0; i < n; i++){
+		for (int j = 0; j < n; j++){
 			cout << "Nhap a[" << i << "][" << j << "] = ";
 			cin >> a[i][j];
 		}
 	}
 }
-void xuat(int a[][100], int dong, int cot)
+void xuat(int a[][100], int n)
 {
-	for (int i = 0; i < dong; i++){
-		for (int j = 0; j < cot; j++){
+	for (int i = 0; i < n; i++){
+		for (int j = 0; j < n; j++){
 			cout << a[i][j] << " ";
 		}
 		cout << "\n";
 	}	
 	
 }
-int TinhTongCacPhanTuTamGiacTrenDuongCheoChinh(int a[][100], int dong, int cot)
+int TinhTongCacPhanTuTamGiacTrenDuongCheoChinh(int a[][100], int n)
 {
     int tong = 0;
-    for (int i = 0; i < dong; i++)
+    for (int i = 0; i < n; i++)
     {
-        for (int j = 0; j < cot; j++)
+        for (int j = 0; j < n; j++)
         {
             if (i < j)
 			{
@@ -35,14 +35,14 @@ int TinhTongCacPhanTuTamGiacTrenDuongCheoChinh(int a[][100], int dong, int cot)
     }
     return tong;
 }
-int TinhTongCacPhanTuTamGiacTrenDuongCheoPhu(int a[][100], int dong, int cot)
+int TinhTongCacPhanTuTamGiacTrenDuongCheoPhu(int a[][100], int n)
 {
     int tong = 0;
-    for (int i = 0; i < dong; i++)
+    for (int i = 0; i < n; i++)
     {
-        for (int j = 0; j < cot; j++)
+        for (int j = 0; j < n; j++)
         {
-            if (i + j < dong - 1)
+            if (i + j < n - 1)
 			{
 				tong += a[i][j];
 			}
@@ -50,12 +50,12 @@ int TinhTongCacPhanTuTamGiacTrenDuongCheoPhu(int a[][100], int dong, int cot)
     }
     return tong;
 }
-int TinhTongCacPhanTuTamGiacDuoiDuongCheoChinh(int a[][100], int dong, int cot)
+int TinhTongCacPhanTuTamGiacDuoiDuongCheoChinh(int a[][100], int n)
 {
     int tong = 0;
-    for (int i = 0; i < dong; i++)
+    for (int i = 0; i < n; i++)
     {
-        for (int j = 0; j < cot; j++)
+        for (int j = 0; j < n; j++)
         {
             if (i > j)
 			{
@@ -65,14 +65,14 @@ int TinhTongCacPhanTuTamGiacDuoiDuongCheoChinh(int a[][100], int dong, int cot)
     }
     return tong;
 }
-int TinhTongCacPhanTuTamGiacDuoiDuongCheoPhu(int a[][100], int dong, int cot)
+int TinhTongCacPhanTuTamGiacDuoiDuongCheoPhu(int a[][100], int n)
 {
     int tong = 0;
-    for (int i = 0; i < dong; i++)
+    for (int i = 0; i < n; i++)
     {
-        for (int j = 0; j < cot; j++)
+        for (int j = 0; j < n; j++)
         {
-            if (i + j > dong - 1)
+            if (i + j > n - 1)
 			{
 				tong += a[i][j];
 			}
@@ -82,16 +82,14 @@ int TinhTongCacPhanTuTamGiacDuoiDuongCheoPhu(int a[][100], int dong, int cot)
 }
 int main()
 {
-	int a[100][100], dong, cot;
-	cout << "Nhap so dong: ";
-	cin >> dong;
-	cout << "Nhap so cot: ";
-	cin >> cot;
-	nhap(a, dong, cot);
-	xuat(a, dong, cot);
-	cout << TinhTongCacPhanTuTamGiacTrenDuongCheoChinh(a , dong, cot);
-	cout << TinhTongCacPhanTuTamGiacTrenDuongCheoPhu(a , dong, cot);
-	cout << TinhTongCacPhanTuTamGiacDuoiDuongCheoChinh(a , dong, cot);
-	cout << TinhTongCacPhanTuTamGiacDuoiDuongCheoChinh(a , dong, cot);
+	int a[100][100], n;
+	cout << "Nhap n: ";
+	cin >> n;
+	nhap(a, n);
+	xuat(a, n);
+	cout << TinhTongCacPhanTuTamGiacTrenDuongCheoChinh(a , n);
+	cout << TinhTongCacPhanTuTamGiacTrenDuongCheoPhu(a , n);
+	cout << TinhTongCacPhanTuTamGiacDuoiDuongCheoChinh(a , n);
+	cout << TinhTongCacPhanTuTamGiacDuoiDuongCheoPhu(a , n);
 	return 0;
 }
